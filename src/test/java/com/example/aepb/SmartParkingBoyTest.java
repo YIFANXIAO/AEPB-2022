@@ -51,4 +51,16 @@ class SmartParkingBoyTest {
         assertEquals(1, parkingLotB.getRemainingCount());
     }
 
+    @Test
+    void should_get_ticket_for_carA_when_Parking_CarA() {
+        ParkingLot parkingLotA = new ParkingLot(1);
+        ParkingLot parkingLotB = new ParkingLot(2);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotA, parkingLotB);
+        Car carA = new Car("京A12345");
+
+        ParkingResult parkingResult = smartParkingBoy.parkingCar(carA);
+
+        assertEquals("京A12345", parkingResult.getTicket().getAssociatedCarPlateNumber());
+    }
+
 }
