@@ -1,4 +1,4 @@
-package com.example.AEPB.entity;
+package com.example.aepb.entity;
 
 public class ParkingResult {
 

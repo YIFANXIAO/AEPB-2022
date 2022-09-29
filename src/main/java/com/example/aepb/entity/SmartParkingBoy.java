@@ -1,4 +1,4 @@
-package com.example.AEPB.entity;
+package com.example.aepb.entity;
 
 public class SmartParkingBoy {
 
@@ -12,7 +12,11 @@ public class SmartParkingBoy {
     }
 
     public ParkingResult parkingCar(Car car) {
-        return new ParkingResult("car already parking in ParkingLotA", new Ticket());
+        if(parkingLotA.getRemainingCount() > parkingLotB.getRemainingCount()) {
+            return new ParkingResult("car already parking in ParkingLotA", new Ticket());
+        }
+
+        return new ParkingResult("car already parking in ParkingLotB", new Ticket());
     }
 
 }

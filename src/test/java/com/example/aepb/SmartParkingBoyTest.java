@@ -1,0 +1,42 @@
+package com.example.aepb;
+
+import com.example.aepb.entity.Car;
+import com.example.aepb.entity.ParkingLot;
+import com.example.aepb.entity.ParkingResult;
+import com.example.aepb.entity.SmartParkingBoy;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.util.AssertionErrors.assertNotNull;
+
+class SmartParkingBoyTest {
+
+    @Test
+    void should_park_car_in_parking_lot_A_when_Parking_Lot_A_remaining_space_more_than_Parking_Lot_B() {
+        ParkingLot parkingLotA = new ParkingLot(2);
+        ParkingLot parkingLotB = new ParkingLot(1);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotA, parkingLotB);
+        Car car = new Car("京A12345");
+
+        ParkingResult parkingResult = smartParkingBoy.parkingCar(car);
+
+        assertEquals("car already parking in ParkingLotA", parkingResult.getMessage());
+        assertNotNull("get the ticket", parkingResult.getTicket());
+
+    }
+
+    @Test
+    void should_park_car_in_parking_lot_B_when_Parking_Lot_B_remaining_space_more_than_Parking_Lot_A() {
+        ParkingLot parkingLotA = new ParkingLot(1);
+        ParkingLot parkingLotB = new ParkingLot(2);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotA, parkingLotB);
+        Car car = new Car("京A12345");
+
+        ParkingResult parkingResult = smartParkingBoy.parkingCar(car);
+
+        assertEquals("car already parking in ParkingLotB", parkingResult.getMessage());
+        assertNotNull("get the ticket", parkingResult.getTicket());
+
+    }
+
+}
