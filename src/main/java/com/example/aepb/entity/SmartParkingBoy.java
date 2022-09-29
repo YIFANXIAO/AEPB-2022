@@ -13,9 +13,11 @@ public class SmartParkingBoy {
 
     public ParkingResult parkingCar(Car car) {
         if(parkingLotA.getRemainingCount() > parkingLotB.getRemainingCount()) {
+            parkingLotA.parkingSpacesMinusOne();
             return new ParkingResult("car already parking in ParkingLotA", new Ticket());
         }
 
+        parkingLotB.parkingSpacesMinusOne();
         return new ParkingResult("car already parking in ParkingLotB", new Ticket());
     }
 

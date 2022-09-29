@@ -39,4 +39,16 @@ class SmartParkingBoyTest {
 
     }
 
+    @Test
+    void should_minus_one_for_parking_lot_B_when_Parking_Lot_B_remaining_space_more_than_Parking_Lot_A() {
+        ParkingLot parkingLotA = new ParkingLot(1);
+        ParkingLot parkingLotB = new ParkingLot(2);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotA, parkingLotB);
+        Car car = new Car("京A12345");
+
+        ParkingResult parkingResult = smartParkingBoy.parkingCar(car);
+
+        assertEquals(1, parkingLotB.getRemainingCount());
+    }
+
 }

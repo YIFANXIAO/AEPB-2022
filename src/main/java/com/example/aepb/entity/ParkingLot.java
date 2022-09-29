@@ -15,4 +15,9 @@ public class ParkingLot {
     public ParkingLot(Integer remainingCount) {
         this.remainingCount = remainingCount;
     }
+
+    public void parkingSpacesMinusOne() {
+        remainingCount--;
+    }
+
 }
