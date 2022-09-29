@@ -35,7 +35,7 @@ class SmartParkingBoyTest {
         ParkingResult parkingResult = smartParkingBoy.parkingCar(car);
 
         assertEquals("car already parking in ParkingLotB", parkingResult.getMessage());
-        assertNotNull("get the ticket", parkingResult.getTicket());
+        assertNotNull("system error", parkingResult.getTicket());
 
     }
 
@@ -49,6 +49,20 @@ class SmartParkingBoyTest {
         ParkingResult parkingResult = smartParkingBoy.parkingCar(car);
 
         assertEquals(1, parkingLotB.getRemainingCount());
+    }
+
+    @Test
+    void should_parking_car_in_parking_lot_A_when_Parking_Lot_B_remaining_space_same_with_Parking_Lot_A() {
+        ParkingLot parkingLotA = new ParkingLot(2);
+        ParkingLot parkingLotB = new ParkingLot(2);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotA, parkingLotB);
+        Car car = new Car("京A12345");
+
+        ParkingResult parkingResult = smartParkingBoy.parkingCar(car);
+
+        assertEquals("car already parking in ParkingLotA", parkingResult.getMessage());
+        assertNotNull("system error", parkingResult.getTicket());
+        assertEquals(1, parkingLotA.getRemainingCount());
     }
 
     @Test
