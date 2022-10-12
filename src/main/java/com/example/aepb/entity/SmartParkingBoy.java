@@ -1,6 +1,8 @@
 package com.example.aepb.entity;
 
-public class SmartParkingBoy {
+import com.example.aepb.service.parkingCar;
+
+public class SmartParkingBoy implements parkingCar {
 
     private ParkingLot parkingLotA;
 
@@ -11,6 +13,7 @@ public class SmartParkingBoy {
         this.parkingLotB = parkingLotB;
     }
 
+    @Override
     public ParkingResult parkingCar(Car car) {
         if(parkingLotA.getRemainingCount() >= parkingLotB.getRemainingCount()) {
             parkingLotA.parkingSpacesMinusOne();
